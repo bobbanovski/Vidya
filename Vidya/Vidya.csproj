@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201703151240438_seedMembershipType.Designer.cs">
       <DependentUpon>201703151240438_seedMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703151250282_addConventionsToCustomer.cs" />
+    <Compile Include="Migrations\201703151250282_addConventionsToCustomer.Designer.cs">
+      <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -280,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703151240438_seedMembershipType.resx">
       <DependentUpon>201703151240438_seedMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151250282_addConventionsToCustomer.resx">
+      <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
