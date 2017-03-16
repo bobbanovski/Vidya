@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Vidya.Models.Video>
+@{
+    ViewBag.Title = "Videos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Videos</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr><th>Video</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var video in Model)
+    {
+        <tr><td>@video.Name</td></tr>
+    }
+    </tbody>
+</table>

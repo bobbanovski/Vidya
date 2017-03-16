@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Vidya.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var className = Model.Count() > 5 ? "popular" : null;
+}
+<h2 class="@className">Customers</h2>
+
+
+@if (Model == null)
+{
+    <p>There are no customers yet</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Customer</th></tr>
+        </thead>
+
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
