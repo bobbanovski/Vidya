@@ -39,7 +39,11 @@ namespace Vidya.Controllers
 
         public ActionResult NewCustomer()
         {
-            return View();
+            var customerView = new NewCustomerView
+            {
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View(customerView);
         }
     }
 }
