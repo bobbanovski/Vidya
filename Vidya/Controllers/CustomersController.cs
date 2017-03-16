@@ -36,5 +36,10 @@ namespace Vidya.Controllers
                 return HttpNotFound();
             return View(customer);
         }
+
+        public ActionResult NewCustomer()
+        {
+            return View();
+        }
     }
 }
