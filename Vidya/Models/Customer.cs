@@ -13,6 +13,7 @@ namespace Vidya.Models
         [StringLength(255)]
         public string Name { get; set; }
         public bool IsSubscribed { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public MembershipType MembershipType { get; set; }
         public byte MembershipTypeId { get; set; } //foreign key

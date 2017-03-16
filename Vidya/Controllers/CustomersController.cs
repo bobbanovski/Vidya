@@ -25,7 +25,7 @@ namespace Vidya.Controllers
 
         public ActionResult Index()
         {
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             var video = new Video {Name = "Lord of War"};
             var viewModel = new VideoViewModel
             {

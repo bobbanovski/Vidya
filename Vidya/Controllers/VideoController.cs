@@ -21,5 +21,11 @@ namespace Vidya.Controllers
             var videos = _context.Videos.ToList();
             return View(videos);
         }
+
+        public ActionResult Details(int id)
+        {
+            var video = _context.Videos.FirstOrDefault(x => x.Id == id);
+            return View(video);
+        }
     }
 }

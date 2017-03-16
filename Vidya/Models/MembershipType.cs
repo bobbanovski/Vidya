@@ -11,5 +11,6 @@ namespace Vidya.Models
         public short SignupFee { get; set; }
         public byte DurationMonths { get; set; }
         public byte DiscountRate { get; set; }
+        public string MembershipName { get; set; }
     }
 }

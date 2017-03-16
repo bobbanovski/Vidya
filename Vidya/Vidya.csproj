@@ -195,6 +195,22 @@
     <Compile Include="Migrations\201703151250282_addConventionsToCustomer.Designer.cs">
       <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703160907367_NameToMembershipType.cs" />
+    <Compile Include="Migrations\201703160907367_NameToMembershipType.Designer.cs">
+      <DependentUpon>201703160907367_NameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703160920112_customerBirthDate.cs" />
+    <Compile Include="Migrations\201703160920112_customerBirthDate.Designer.cs">
+      <DependentUpon>201703160920112_customerBirthDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703160924223_editCustomer.cs" />
+    <Compile Include="Migrations\201703160924223_editCustomer.Designer.cs">
+      <DependentUpon>201703160924223_editCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161017466_editVideoModel.cs" />
+    <Compile Include="Migrations\201703161017466_editVideoModel.Designer.cs">
+      <DependentUpon>201703161017466_editVideoModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -265,6 +281,7 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Video\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +309,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703151250282_addConventionsToCustomer.resx">
       <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703160907367_NameToMembershipType.resx">
+      <DependentUpon>201703160907367_NameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703160920112_customerBirthDate.resx">
+      <DependentUpon>201703160920112_customerBirthDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703160924223_editCustomer.resx">
+      <DependentUpon>201703160924223_editCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161017466_editVideoModel.resx">
+      <DependentUpon>201703161017466_editVideoModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

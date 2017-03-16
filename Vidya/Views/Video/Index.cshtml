@@ -12,7 +12,7 @@
     <tbody>
     @foreach (var video in Model)
     {
-        <tr><td>@video.Name</td></tr>
+        <tr><td>@Html.ActionLink(video.Name, "Details", "Video", new {id = video.Id}, null)</td></tr>
     }
     </tbody>
 </table>
