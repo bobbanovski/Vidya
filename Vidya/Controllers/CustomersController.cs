@@ -39,19 +39,42 @@ namespace Vidya.Controllers
 
         public ActionResult NewCustomer()
         {
-            var customerView = new NewCustomerView
+            var customerView = new CustomerFormView
             {
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
-            return View(customerView);
+            return View("CustomerForm", customerView);
         }
 
         [HttpPost]
-        public ActionResult NewCustomer(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var updateCustomer = _context.Customers.Single(c => c.Id == customer.Id);
+                updateCustomer.Name = customer.Name;
+                updateCustomer.BirthDate = customer.BirthDate;
+                updateCustomer.IsSubscribed = customer.IsSubscribed;
+                updateCustomer.MembershipTypeId = customer.MembershipTypeId;
+            }
             _context.SaveChanges();
             return RedirectToAction("Index","Customers");
         }
+
+        public ActionResult EditCustomer(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new CustomerFormView
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModel);
+        }
+
     }
 }

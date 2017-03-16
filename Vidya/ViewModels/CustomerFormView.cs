@@ -6,7 +6,7 @@ using Vidya.Models;
 
 namespace Vidya.ViewModels
 {
-    public class NewCustomerView
+    public class CustomerFormView
     {
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
         public Customer Customer { get; set; }
