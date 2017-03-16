@@ -45,5 +45,13 @@ namespace Vidya.Controllers
             };
             return View(customerView);
         }
+
+        [HttpPost]
+        public ActionResult NewCustomer(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Customers");
+        }
     }
 }
