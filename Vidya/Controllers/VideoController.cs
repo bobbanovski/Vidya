@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Vidya.Models;
@@ -18,7 +19,7 @@ namespace Vidya.Controllers
 
         public ActionResult Index()
         {
-            var videos = _context.Videos.ToList();
+            var videos = _context.Videos.Include(v => v.Genre).ToList();
             return View(videos);
         }
 

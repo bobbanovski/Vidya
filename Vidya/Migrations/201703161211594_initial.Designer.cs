@@ -7,13 +7,13 @@ namespace Vidya.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class editCustomer : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(editCustomer));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703160924223_editCustomer"; }
+            get { return "201703161211594_initial"; }
         }
         
         string IMigrationMetadata.Source

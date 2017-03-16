@@ -175,45 +175,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703151223220_initial.cs" />
-    <Compile Include="Migrations\201703151223220_initial.Designer.cs">
-      <DependentUpon>201703151223220_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703151234038_addSubscriptionBoolToCustomer.cs" />
-    <Compile Include="Migrations\201703151234038_addSubscriptionBoolToCustomer.Designer.cs">
-      <DependentUpon>201703151234038_addSubscriptionBoolToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703151238423_MembershipType.cs" />
-    <Compile Include="Migrations\201703151238423_MembershipType.Designer.cs">
-      <DependentUpon>201703151238423_MembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703151240438_seedMembershipType.cs" />
-    <Compile Include="Migrations\201703151240438_seedMembershipType.Designer.cs">
-      <DependentUpon>201703151240438_seedMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703151250282_addConventionsToCustomer.cs" />
-    <Compile Include="Migrations\201703151250282_addConventionsToCustomer.Designer.cs">
-      <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703160907367_NameToMembershipType.cs" />
-    <Compile Include="Migrations\201703160907367_NameToMembershipType.Designer.cs">
-      <DependentUpon>201703160907367_NameToMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703160920112_customerBirthDate.cs" />
-    <Compile Include="Migrations\201703160920112_customerBirthDate.Designer.cs">
-      <DependentUpon>201703160920112_customerBirthDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703160924223_editCustomer.cs" />
-    <Compile Include="Migrations\201703160924223_editCustomer.Designer.cs">
-      <DependentUpon>201703160924223_editCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703161017466_editVideoModel.cs" />
-    <Compile Include="Migrations\201703161017466_editVideoModel.Designer.cs">
-      <DependentUpon>201703161017466_editVideoModel.cs</DependentUpon>
+    <Compile Include="Migrations\201703161211594_initial.cs" />
+    <Compile Include="Migrations\201703161211594_initial.Designer.cs">
+      <DependentUpon>201703161211594_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -295,32 +264,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703151223220_initial.resx">
-      <DependentUpon>201703151223220_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703151234038_addSubscriptionBoolToCustomer.resx">
-      <DependentUpon>201703151234038_addSubscriptionBoolToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703151238423_MembershipType.resx">
-      <DependentUpon>201703151238423_MembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703151240438_seedMembershipType.resx">
-      <DependentUpon>201703151240438_seedMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703151250282_addConventionsToCustomer.resx">
-      <DependentUpon>201703151250282_addConventionsToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703160907367_NameToMembershipType.resx">
-      <DependentUpon>201703160907367_NameToMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703160920112_customerBirthDate.resx">
-      <DependentUpon>201703160920112_customerBirthDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703160924223_editCustomer.resx">
-      <DependentUpon>201703160924223_editCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703161017466_editVideoModel.resx">
-      <DependentUpon>201703161017466_editVideoModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703161211594_initial.resx">
+      <DependentUpon>201703161211594_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
