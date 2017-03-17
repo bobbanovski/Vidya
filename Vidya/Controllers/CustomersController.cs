@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Vidya.Models;
 using Vidya.ViewModels;
 
@@ -54,6 +55,7 @@ namespace Vidya.Controllers
             else
             {
                 var updateCustomer = _context.Customers.Single(c => c.Id == customer.Id);
+                
                 updateCustomer.Name = customer.Name;
                 updateCustomer.BirthDate = customer.BirthDate;
                 updateCustomer.IsSubscribed = customer.IsSubscribed;

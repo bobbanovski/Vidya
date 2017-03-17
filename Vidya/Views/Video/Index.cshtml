@@ -5,6 +5,10 @@
 }
 
 <h2>Videos</h2>
+<div>
+    @Html.ActionLink("Create New", "NewVideo", "Video", new { @class = "btn btn-success" })
+</div>
+<br />
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
@@ -16,7 +20,7 @@
     @foreach (var video in Model)
     {
         <tr>
-            <td>@Html.ActionLink(video.Name, "Details", "Video", new {id = video.Id}, null)</td>
+            <td>@Html.ActionLink(video.Name, "EditVideo", "Video", new {id = video.Id}, null)</td>
             <td>@video.Genre.Name</td>
         </tr>
     }

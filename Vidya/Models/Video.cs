@@ -13,12 +13,25 @@ namespace Vidya.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public int NumberInStock { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public DateTime DateAdded { get; set; }
 
         [Required]
+        [Display(Name="Number in Stock")]
+        public int NumberInStock { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Release Date")]
+        public DateTime ReleaseDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Added")]
+        public DateTime DateAdded { get; set; }
+        
         public Genre Genre { get; set; }
+
+        [Display(Name = "Genre")]
+        [Required]
         public byte GenreId { get; set; } //foreign key //this must be same data type as foreign key
     }
 }
