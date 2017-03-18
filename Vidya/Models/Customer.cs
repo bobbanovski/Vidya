@@ -10,7 +10,7 @@ namespace Vidya.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Customer name is required.")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -19,6 +19,7 @@ namespace Vidya.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display (Name = "Date of Birth")]
+        [Min18YearsValidate] // Custom validation see Min18YearsValidate.cs
         public DateTime? BirthDate { get; set; }
 
         [Display (Name = "Membership Type")]
