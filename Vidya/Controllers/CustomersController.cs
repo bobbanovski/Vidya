@@ -42,12 +42,14 @@ namespace Vidya.Controllers
         {
             var customerView = new CustomerFormView
             {
+                Customer = new Customer(),
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
             return View("CustomerForm", customerView);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid) // server side validation

@@ -22,9 +22,10 @@ namespace Vidya.Models
         [Min18YearsValidate] // Custom validation see Min18YearsValidate.cs
         public DateTime? BirthDate { get; set; }
 
-        [Display (Name = "Membership Type")]
+        
         public MembershipType MembershipType { get; set; }
 
+        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; } //foreign key
     }
 }

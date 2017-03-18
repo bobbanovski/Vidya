@@ -11,10 +11,10 @@ namespace Vidya.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var customer = (Customer)validationContext.ObjectInstance;
-            if (customer.MembershipTypeId == 1)
+            if (customer.MembershipTypeId == MembershipType.PayAsYouGo) //use readonly here to remove magic string
                 return ValidationResult.Success;
             if (customer.BirthDate == null)
-                return new ValidationResult("Birth data is required");
+                return new ValidationResult("Birth date is required");
             //Check customer age
             var age = DateTime.Now.Year - customer.BirthDate.Value.Year;
             if (age >= 18)
