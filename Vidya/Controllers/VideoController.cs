@@ -42,14 +42,25 @@ namespace Vidya.Controllers
         {
             var videoView = new VideoFormView
             {
+                Video = new Video(),
                 Genres = _context.Genres.ToList()
             };
             return View("VideoForm", videoView);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Video video)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new VideoFormView
+                {
+                    Video = new Video(),
+                    Genres = _context.Genres.ToList()
+                };
+                return View("VideoForm", viewModel);
+            }
             if (video.Id == 0)
                 _context.Videos.Add(video);
             else

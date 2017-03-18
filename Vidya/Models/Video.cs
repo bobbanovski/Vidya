@@ -16,16 +16,19 @@ namespace Vidya.Models
 
         [Required]
         [Display(Name="Number in Stock")]
+        [Range(1,20)]
         public int NumberInStock { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Release Date")]
+        [Required]
         public DateTime ReleaseDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Added")]
+        [Required]
         public DateTime DateAdded { get; set; }
         
         public Genre Genre { get; set; }

@@ -18,25 +18,38 @@ else
     <div class="form-group">
         @Html.LabelFor(m => m.Video.Name)
         @Html.TextBoxFor(m => m.Video.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Video.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Video.ReleaseDate)
         @Html.EditorFor(m => m.Video.ReleaseDate, new { @class = "form-control datecontrol", placeholder = "Enter Date of Birth" })
+        <br/>
+        @Html.ValidationMessageFor(m => m.Video.ReleaseDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Video.DateAdded)
         @Html.EditorFor(m => m.Video.DateAdded, new { @class = "form-control datecontrol", placeholder = "Enter Date of Birth" })
+        <br/>
+        @Html.ValidationMessageFor(m => m.Video.DateAdded)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Video.GenreId)
         @Html.DropDownListFor(m => m.Video.GenreId, new SelectList(Model.Genres, "Id", "Name"), "select genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Video.GenreId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Video.NumberInStock)
         @Html.TextBoxFor(m => m.Video.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Video.NumberInStock)
     </div>
     @Html.HiddenFor(m => m.Video.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
 
