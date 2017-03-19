@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using Vidya.Models;
 
 namespace Vidya.Dtos
 {
-    public class CustomerDto
+    public class VideoDto
     {
         public int Id { get; set; }
 
@@ -15,10 +14,15 @@ namespace Vidya.Dtos
         [StringLength(255)]
         public string Name { get; set; }
 
-        public bool IsSubscribed { get; set; }
+        [Range(1, 20)]
+        [Required]
+        public int NumberInStock { get; set; }
+
+        [Required]
+        public byte GenreId { get; set; }
         
-        public DateTime? BirthDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         
-        public byte MembershipTypeId { get; set; } //foreign key
+        public DateTime DateAdded { get; set; }
     }
 }

@@ -24,24 +24,27 @@ namespace Vidya.Controllers.Api
             return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
-        public CustomerDto GetCustomer(int id)
+        //public CustomerDto GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            return Mapper.Map<Customer, CustomerDto>(customer);
+                //throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         [HttpPost]
-        public CustomerDto NewCustomer(CustomerDto customerDto)
+        public IHttpActionResult NewCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                //throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer); //EF will update with new Id
             _context.SaveChanges();
             customerDto.Id = customer.Id;
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         [HttpPut]
@@ -56,13 +59,14 @@ namespace Vidya.Controllers.Api
         }
 
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             var selectCustomer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (selectCustomer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             _context.Customers.Remove(selectCustomer);
             _context.SaveChanges();
+            return Ok(204);
         }
     }
 }

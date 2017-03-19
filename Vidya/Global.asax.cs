@@ -23,6 +23,8 @@ namespace Vidya
             {
                 cfg.CreateMap<Customer, CustomerDto>();
                 cfg.CreateMap<CustomerDto, Customer>();
+                cfg.CreateMap<Video, VideoDto>();
+                cfg.CreateMap<VideoDto, Video>();
             });
 
             AreaRegistration.RegisterAllAreas();
