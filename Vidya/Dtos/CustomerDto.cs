@@ -20,5 +20,7 @@ namespace Vidya.Dtos
         public DateTime? BirthDate { get; set; }
         
         public byte MembershipTypeId { get; set; } //foreign key
+
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }
