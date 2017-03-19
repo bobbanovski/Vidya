@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
 using Vidya.App_Start;
+using Vidya.Dtos;
+using Vidya.Models;
 
 namespace Vidya
 {
@@ -15,8 +17,13 @@ namespace Vidya
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             // Register Automapper
-            //Mapper.Initialize(c => c.AddProfile(new MappingProfile()));
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Customer, CustomerDto>();
+                cfg.CreateMap<CustomerDto, Customer>();
+            });
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using Vidya.Dtos;
 using Vidya.Models;
 
 namespace Vidya.Controllers.Api
@@ -17,39 +19,39 @@ namespace Vidya.Controllers.Api
             _context = new ApplicationDbContext();
         }
         // GET /api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
-        public Customer GetCustomer(int id)
+        public CustomerDto GetCustomer(int id)
         {
             var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return customer;
+            return Mapper.Map<Customer, CustomerDto>(customer);
         }
 
         [HttpPost]
-        public Customer NewCustomer(Customer customer)
+        public CustomerDto NewCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
-            _context.Customers.Add(customer);
+            var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
+            _context.Customers.Add(customer); //EF will update with new Id
             _context.SaveChanges();
-            return customer;
+            customerDto.Id = customer.Id;
+            return customerDto;
         }
 
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public void UpdateCustomer(int id, CustomerDto customerDto)
         {
             var selectCustomer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (selectCustomer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            selectCustomer.BirthDate = customer.BirthDate;
-            selectCustomer.IsSubscribed = customer.IsSubscribed;
-            selectCustomer.MembershipTypeId = customer.MembershipTypeId;
-            selectCustomer.Name = customer.Name;
+
+            Mapper.Map(customerDto, selectCustomer);
             _context.SaveChanges();
         }
 

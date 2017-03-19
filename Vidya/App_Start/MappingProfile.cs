@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using Vidya.Dtos;
 using Vidya.Models;
 using Vidya.ViewModels;
 
@@ -10,9 +11,10 @@ namespace Vidya.App_Start
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile()
-        {
-            //Mapper.Configuration.
-        }
+        //public MappingProfile()
+        //{
+        //    Mapper.CreateMap<Customer, CustomerDto>();
+        //    Mapper.CreateMap<CustomerDto, Customer>();
+        //}
     }
 }
