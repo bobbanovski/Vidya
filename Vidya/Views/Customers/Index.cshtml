@@ -1,44 +1,67 @@
-﻿@model IEnumerable<Vidya.Models.Customer>
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{
-    var className = Model.Count() > 5 ? "popular" : null;
-}
-<h2 class="@className">Customers</h2>
+
+<h2>Customers</h2>
 
 <div>
     <p>@Html.ActionLink("Add New Customer", "NewCustomer", "Customers", new { @class="btn btn-success"})</p>
     <br/>
 </div>
 
-@if (Model == null)
-{
-    <p>There are no customers yet</p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" id="customers">
         <thead>
         <tr>
             <th>Customer</th>
-            <th>Discount</th>
             <th>Membership Type</th>
-            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
-
-        <tbody>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-                    <td>@customer.MembershipType.DiscountRate%</td>
-                    <td>@customer.MembershipType.MembershipName</td>
-                    <td>@Html.ActionLink(customer.Name, "EditCustomer", "Customers", new { id = customer.Id }, null)</td>
-                </tr>
-            }
-        </tbody>
     </table>
+@*}*@
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [ // each column is an object
+                    {
+                        data: "name",
+                        render: function (data, type, customer){// render each row in the rable
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-customer-id='" + data + "'>Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#customers ").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Please confirm deletion", function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            succuss: function () {
+                                button.parent("tr").remove();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 }
