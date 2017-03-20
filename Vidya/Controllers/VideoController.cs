@@ -20,10 +20,13 @@ namespace Vidya.Controllers
 
         public ActionResult Index()
         {
-            var videos = _context.Videos.Include(v => v.Genre).ToList();
-            return View(videos);
+            if (User.IsInRole(RoleName.ManageVideos))
+                return View("Index");
+
+            return View("CustomerIndex");
         }
 
+        [Authorize(Roles = RoleName.ManageVideos)]
         public ActionResult EditVideo(int id)
         {
             var video = _context.Videos.FirstOrDefault(x => x.Id == id);
@@ -38,6 +41,7 @@ namespace Vidya.Controllers
             return View("VideoForm", viewModel);
         }
 
+        [Authorize (Roles = RoleName.ManageVideos)]
         public ActionResult NewVideo()
         {
             var videoView = new VideoFormView
@@ -50,6 +54,7 @@ namespace Vidya.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.ManageVideos)]
         public ActionResult Save(Video video)
         {
             if (!ModelState.IsValid)

@@ -27,6 +27,8 @@ namespace Vidya
                 cfg.CreateMap<VideoDto, Video>();
                 cfg.CreateMap<MembershipType, MembershipTypeDto>();
                 cfg.CreateMap<MembershipTypeDto, MembershipType>();
+                cfg.CreateMap<Genre, GenreDto>();
+                cfg.CreateMap<GenreDto, Genre>();
             });
 
             AreaRegistration.RegisterAllAreas();

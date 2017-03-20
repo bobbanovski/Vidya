@@ -152,14 +152,20 @@ namespace Vidya.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    DriverLicense = model.DriverLicense
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("ManageVideos"));
-                    await UserManager.AddToRoleAsync(user.Id, "ManageVideos");
+                    //Set up admin accounts
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("ManageVideos"));
+                    //await UserManager.AddToRoleAsync(user.Id, "ManageVideos");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

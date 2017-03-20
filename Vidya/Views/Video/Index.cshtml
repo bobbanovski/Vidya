@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Vidya.Models.Video>
-@{
+﻿@{
     ViewBag.Title = "Videos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,20 +8,60 @@
     @Html.ActionLink("Create New", "NewVideo", "Video", new { @class = "btn btn-success" })
 </div>
 <br />
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="videos">
     <thead>
     <tr>
         <th>Video</th>
         <th>Genre</th>
+        <th>Delete</th>
     </tr>
     </thead>
-    <tbody>
-    @foreach (var video in Model)
-    {
-        <tr>
-            <td>@Html.ActionLink(video.Name, "EditVideo", "Video", new {id = video.Id}, null)</td>
-            <td>@video.Genre.Name</td>
-        </tr>
-    }
-    </tbody>
 </table>
+
+@section scripts{
+    <script>
+        $(document)
+            .ready(function() {
+                var table = $("#videos")
+                    .DataTable({
+                        ajax: {
+                            url: "/api/videos",
+                            dataSrc: ""
+                        },
+                        columns: [
+                            {
+                                data: "name",
+                                render: function(data, type, video) { // render each row in the rable
+                                    return "<a href='/videos/edit/" + video.id + "'>" + video.name + "</a>";
+                                }
+                            },
+                            {
+                                data: "genre.name"
+                            },
+                            {
+                                data: "id",
+                                render: function(data) {
+                                    return "<button class='btn-link js-delete' data-video-id='" + data + "'>Delete</button>";
+                                }
+                            }
+                        ]
+                    });
+                $("#videos").on("click", ".js-delete", function() {
+                    var button = $(this);
+                    bootbox.confirm("Please confirm deletion", function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/videos/" + button.attr("data-video-id"),
+                                method: "DELETE",
+                                succuss: function () {
+                                    table.row(button.parent("tr")).remove().draw();
+                                }
+                            });
+                        }
+                    });
+                });
+
+
+            });
+    </script>
+}

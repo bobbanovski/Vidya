@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Data.Entity;
 using System.Web.Http;
 using AutoMapper;
 using Vidya.Dtos;
@@ -21,7 +22,10 @@ namespace Vidya.Controllers.Api
 
         public IEnumerable<VideoDto> GetVideos()
         {
-            return _context.Videos.ToList().Select(Mapper.Map<Video, VideoDto>);
+            return _context.Videos
+                .Include(v => v.Genre)
+                .ToList()
+                .Select(Mapper.Map<Video, VideoDto>);
         }
 
         public IHttpActionResult GetVideo(int id)
@@ -64,6 +68,7 @@ namespace Vidya.Controllers.Api
             if (videoSelect == null)
                 return NotFound();
             _context.Videos.Remove(videoSelect);
+            _context.SaveChanges();
             return Ok(204);
         }
     }
